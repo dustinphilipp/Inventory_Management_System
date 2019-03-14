@@ -1,0 +1,54 @@
+@(currentPage: io.ebean.PagedList[Warehouse], warehouses: List[Warehouse])
+@import helper._
+
+@main("Warehouse management") {
+  <div class="container text-center">
+    <h2>All warehouses</h2>
+  </div>
+  @if(currentPage.getTotalCount != 0){
+    @util.javascriptDelete()
+    <div class="table-responsive-sm">
+      <table class="table table-striped w-auto mx-auto">
+        <thead class="thead-light">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Address</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @for(warehouse <- warehouses) {
+          @if(warehouse.active){
+            <tr>
+              <td><a href="@routes.Warehouses.details(warehouse)">@warehouse.id</a></td>
+              <td><a href="@routes.Warehouses.details(warehouse)">@warehouse.name</a></td>
+              <td><a href="@routes.Warehouses.details(warehouse)">@warehouse.address</a></td>
+              <td>
+                @(util.modalButton(("Product_" + warehouse.id), routes.Warehouses.details(warehouse).toString(), "", "fas fa-pencil-alt"))
+                <a href="#"><button type="button" class="btn btn-danger" onclick="javascript:del('@helper.CSRF(routes.Warehouses.delete(warehouse))')">
+                  <i class="fas fa-trash"></i>
+                </button></a>
+              </td>
+            </tr>
+          }
+        }
+        </tbody>
+      </table>
+    </div>
+
+    @util.pagination(currentPage.hasPrev, routes.Warehouses.list(currentPage.getPageIndex - 1).toString
+    ,currentPage.hasNext, routes.Warehouses.list(currentPage.getPageIndex + 1).toString
+    ,currentPage.getDisplayXtoYofZ(" - "," / "))
+
+  } else {
+  <div class="container mt-3 text-center">
+    There are no registered warehouses.
+  </div>
+  }
+  <div class="container mt-3">
+    @(util.modalButton("Warehouse_New", routes.Warehouses.newWarehouse().toString(), "New Warehouse", "fas fa-plus", true))
+    @(util.modalMultipartForm(routes.Warehouses.save().toString()))
+
+  </div>
+}

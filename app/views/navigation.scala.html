@@ -1,0 +1,15 @@
+@()
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark" id="navigation">
+  <a class="navbar-brand" href="@routes.Products.index()">Inventory Management</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav container">
+      <li class="nav-item active"><a class="nav-link" href="@routes.Products.index()">Home</a></li>
+      <li class="nav-item active"><a class="nav-link" href="@routes.Products.list()">Products</a></li>
+      <li class="nav-item active"><a class="nav-link" href="@routes.Warehouses.index()">Warehouses</a></li>
+      <li class="nav-item active"><a class="nav-link" href="@routes.HomeController.impressum()">Contact</a></li>
+    </ul>
+  </div>
+</nav>

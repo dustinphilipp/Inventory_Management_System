@@ -1,0 +1,23 @@
+@(modalButtonName: String,
+  modalActionLoad: String,
+  modalButtonText: String,
+  modalButtonIconClass: String,
+  centerButton: Boolean = false)
+
+<!-- Button trigger modal -->
+@if(centerButton){<div class="container text-center">}
+<button id='@modalButtonName' aria-labelledby='@modalButtonName' type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal" >
+  <i class="@modalButtonIconClass"></i>
+  @modalButtonText
+</button>
+@if(centerButton){</div>}
+
+
+<script>
+  $('#@modalButtonName').click(function () {
+    var $buffer = $('<div />').load('@modalActionLoad', function(data) {
+      $('#modal_title').html($buffer.find(' #form_header'));
+      $('#modal_body').html($buffer.find(' #form_fieldset'));
+    })
+  })
+</script>

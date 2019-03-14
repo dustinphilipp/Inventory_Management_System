@@ -1,0 +1,51 @@
+@(warehouseForm: Form[Warehouse])
+
+@import helper._
+
+@main("Warehouse form") {
+<div>
+  <h1><div id="form_header">Warehouse form</div></h1>
+  <div>
+    @helper.form(action = routes.Warehouses.save(), 'enctype -> "multipart/form-data") {
+    <fieldset id="form_fieldset">
+      <legend>
+        Warehouse
+        @(warehouseForm("name").getValue().orElse("New"))
+      </legend>
+      @helper.CSRF.formField
+      <input type="hidden" value="@warehouseForm("id").value.orElse("")" name="id"/>
+      <input type="hidden" value="@warehouseForm("address.id").value.orElse("")" name="address.id"/>
+
+      <div class="form-group">
+        @helper.inputText(warehouseForm("name"), '_label -> "Name", '_showConstraints -> false, 'class -> "form-control")
+      </div>
+      <div class="form-group">
+        @helper.inputText(warehouseForm("address.street"), '_label -> "Street", '_showConstraints -> false, 'class -> "form-control")
+      </div>
+      <div class="form-group">
+        @helper.inputText(warehouseForm("address.number"), '_label -> "Street Nr.", '_showConstraints -> false, 'class -> "form-control")
+      </div>
+      <div class="form-group">
+        @helper.inputText(warehouseForm("address.postalCode"), '_label -> "Postal Code", '_showConstraints -> false, 'class -> "form-control")
+      </div>
+      <div class="form-group">
+        @helper.inputText(warehouseForm("address.city"), '_label -> "City", '_showConstraints -> false, 'class -> "form-control")
+      </div>
+      <div class="form-group">
+        @helper.inputText(warehouseForm("address.country"), '_label -> "Country", '_showConstraints -> false, 'class -> "form-control")
+      </div>
+    </fieldset>
+    <div class="control-group">
+      <div class="controls">
+        <button value="submit" class="btn btn-primary icon-save">
+          <i class="far fa-save"> Save</i>
+        </button>
+        <a id="cancel" class="btn btn-secondary" href="@routes.Warehouses.list()">
+          Cancel
+        </a>
+      </div>
+    </div>
+    }
+  </div>
+</div>
+}

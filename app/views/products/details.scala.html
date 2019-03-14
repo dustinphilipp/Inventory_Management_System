@@ -1,0 +1,92 @@
+@(productForm: Form[Product])
+
+@import helper._
+
+@main("Product form") {
+<div>
+<h1><div id="form_header">Product form</div></h1>
+<div>
+  @helper.form(action = routes.Products.save(), 'enctype -> "multipart/form-data") {
+  <fieldset id="form_fieldset">
+    <legend>
+      Product
+      @(productForm("name").getValue().orElse("New"))
+    </legend>
+    @helper.CSRF.formField
+    <input type="hidden" value="@productForm("id").value.orElse("")" name="id"/>
+    <input type="hidden" value="@productForm("active").value.orElse("true")" name="id"/>
+
+    <div class="form-group">
+    @helper.inputText(productForm("ean"), '_label -> "EAN", '_showConstraints -> false, 'class -> "form-control")
+    </div>
+    <div class="form-group">
+    @helper.inputText(productForm("name"), '_label -> "Name", '_showConstraints -> false, 'class -> "form-control")
+    </div>
+    <div class="form-group">
+    @helper.textarea(productForm("description"), '_label -> "Description", 'class -> "form-control")
+    </div>
+    <div class="form-group">
+      <dl class=" " id="description_field">
+        <dt><label for="picture">Picture</label></dt>
+        <dd>
+          <input type="file" id="picture" name="picture">
+        </dd>
+      </dl>
+      @if(!productForm("pictureFileName").value().isEmpty()){
+        <div class="control-group">
+          <div class="controls">
+            <img
+              style="position:relative; left:50px;height:80px"
+              src="@("/assets/images/" + productForm("pictureFileName").value().orElse(""))">
+          </div>
+        </div>
+      }
+    </div>
+
+    @*The following tags are hardcoded for simplicity right now*@
+    <div class="control-group">
+      <div class="controls">
+        @** Using Checkboxes for objects in arrays is problematic, because the order of the objects in the array
+        **  would be relevant for the checked status of the checkboxes (i -> value)
+        **
+        **  Using Play's checkbox FormHelper should either be limited to singular attributes or to fixed order
+        **  Arrays
+        @checkbox(productForm("tags[0].id"), '_label -> "Test", 'value -> "1", '_text -> "lightweight")
+        @checkbox(productForm("tags[1].id"), '_label -> "Test", 'value -> "2", '_text -> "metal")
+        @checkbox(productForm("tags[2].id"), '_label -> "Test", 'value -> "3", '_text -> "plastic")
+        *@
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" id="tags[0].id" name="tags[0].id" value="1" type="checkbox"
+            @for(i <- 0 to 2) {
+              @if(productForm("tags[" + i + "].id").getValue().orElse("")=="1"){ checked }
+            }> <label class="form-check-label" for="tags[0].id">lightweight</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" id="tags[1].id" name="tags[1].id" value="2" type="checkbox"
+            @for(i <- 0 to 2) {
+              @if(productForm("tags[" + i + "].id").getValue().orElse("")=="2"){ checked }
+            }> <label class="form-check-label" for="tags[1].id">metal</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" id="tags[2].id" name="tags[2].id" value="3" type="checkbox"
+            @for(i <- 0 to 2) {
+              @if(productForm("tags[" + i + "].id").getValue().orElse("")=="3"){ checked }
+          }> <label class="form-check-label" for="tags[2].id">plastic</label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <div class="control-group">
+    <div class="controls">
+      <button value="submit" class="btn btn-primary icon-save">
+      <i class="far fa-save"> Save</i>
+    </button>
+      <a id="cancel" class="btn btn-secondary" href="@routes.Products.list()">
+        Cancel
+      </a>
+    </div>
+  </div>
+  }
+</div>
+</div>
+}

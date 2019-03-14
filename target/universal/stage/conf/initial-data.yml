@@ -1,0 +1,12 @@
+tags:
+  - !!models.Tag
+      id:       1
+      name:     lightweight
+
+  - !!models.Tag
+    id:       1
+    name:     lightweight
+
+  - !!models.Tag
+    id:       1
+    name:     lightweight

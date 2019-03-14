@@ -1,0 +1,51 @@
+@(currentPage: io.ebean.PagedList[Product])
+@import helper._
+
+@main("Products catalogue") {
+  <div class="container text-center">
+    <h2>All products</h2>
+  </div>
+  @util.javascriptDelete()
+  <div class="table-responsive-sm">
+    <table class="table table-striped w-auto mx-auto">
+      <thead class="thead-light">
+        <tr>
+          <th></th>
+          <th>EAN</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      @for(product <- currentPage.getList()) {
+      @if(product.active){
+        <tr>
+          <td>@if(product.pictureFileName != null){<img
+              style="position:relative; height:80px"
+              src="@("/assets/images/" + product.pictureFileName)">}</td>
+          <td><a href="@routes.Products.details(product) ">@product.ean</a></td>
+          <td><a href="@routes.Products.details(product) ">@product.name</a></td>
+          <td><a href="@routes.Products.details(product) ">@product.description</a></td>
+          <td>
+            @(util.modalButton(("Product_" + product.ean), routes.Products.details(product).toString(), "", "fas fa-pencil-alt"))
+            <a href="#"><button type="button" class="btn btn-danger" onclick="javascript:del('@helper.CSRF(routes.Products.delete(product.ean))')">
+              <i class="fas fa-trash"></i>
+            </button></a>
+          </td>
+        </tr>
+      }
+      }
+      </tbody>
+    </table>
+  </div>
+
+  @util.pagination(currentPage.hasPrev, routes.Products.list(currentPage.getPageIndex - 1).toString
+                  ,currentPage.hasNext, routes.Products.list(currentPage.getPageIndex + 1).toString
+                  ,currentPage.getDisplayXtoYofZ(" - "," / "))
+
+  <div class="container">
+    @(util.modalButton("Product_New", routes.Products.newProduct().toString(), "New Product", "fas fa-plus", true))
+    @(util.modalMultipartForm(routes.Products.save().toString()))
+  </div>
+}
