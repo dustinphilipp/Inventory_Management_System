@@ -35,24 +35,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/Products.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1020">
-              <caret line="84" column="99" selection-start-line="84" selection-start-column="72" selection-end-line="84" selection-end-column="99" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Inventory-Mangement-Webapp/README.md">
+        <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="510">
-                <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+              <first_editor relative-caret-position="170">
+                <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
               </first_editor>
               <second_editor />
             </state>
@@ -195,12 +183,11 @@
     </replaceStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Inventory-Mangement-Webapp" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/views/index.scala.html" />
         <option value="$PROJECT_DIR$/app/utils/ExceptionMailer.java" />
         <option value="$PROJECT_DIR$/app/annotation/Catch.java" />
         <option value="$PROJECT_DIR$/app/views/products/detailsButtonLess.scala.html" />
@@ -251,10 +238,11 @@
         <option value="$PROJECT_DIR$/build.sbt" />
         <option value="$PROJECT_DIR$/app/controllers/Products.java" />
         <option value="$PROJECT_DIR$/Inventory-Mangement-Webapp/README.md" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
     <option name="width" value="1294" />
     <option name="height" value="1047" />
@@ -271,11 +259,6 @@
             <path>
               <item name="inventory_management_system" type="b2602c69:ProjectViewProjectNode" />
               <item name="inventory_management_system" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="inventory_management_system" type="b2602c69:ProjectViewProjectNode" />
-              <item name="inventory_management_system" type="462c0819:PsiDirectoryNode" />
-              <item name="Inventory-Mangement-Webapp" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -385,7 +368,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1056" extended-state="6" />
+    <frame x="-7" y="0" width="1294" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Image Layers" order="0" />
@@ -393,11 +376,11 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Designer" order="4" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.14467409" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.2949757" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="sbt-shell-toolwindow" order="0" weight="0.32932165" />
-      <window_info anchor="bottom" id="Terminal" order="1" sideWeight="0.4964229" visible="true" weight="0.3206934" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="2" sideWeight="0.5035771" side_tool="true" visible="true" weight="0.3206934" />
+      <window_info anchor="bottom" id="Terminal" order="1" sideWeight="0.49594814" visible="true" weight="0.3238512" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.50405186" side_tool="true" visible="true" weight="0.3238512" />
       <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info anchor="bottom" id="Messages" order="4" weight="0.30415756" />
       <window_info anchor="bottom" id="Build" order="5" weight="0.3298731" />
@@ -421,13 +404,6 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.12/srcs/play_2.12-2.7.0-sources.jar!/views/helper/inputFile.scala.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.12/srcs/play_2.12-2.7.0-sources.jar!/play/api/libs/Files.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
@@ -840,13 +816,23 @@
     <entry file="file://$PROJECT_DIR$/Inventory-Mangement-Webapp/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="510">
-            <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+          <first_editor relative-caret-position="255">
+            <caret line="15" column="29" lean-forward="true" selection-end-line="44" />
           </first_editor>
           <second_editor />
         </state>
       </provider>
       <provider editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="170">
+            <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
