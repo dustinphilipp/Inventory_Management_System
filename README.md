@@ -1,5 +1,4 @@
 # Inventory Management Webapp
-###Disclaimer
 
 This is an unfinished work in progress.  
 Creating this web-application serves the dual purpose of building my publicly visible portfolio whilst also learning my way around the play framework.  
