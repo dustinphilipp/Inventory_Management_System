@@ -15,6 +15,7 @@ If anyone decides to use this as a reference point for their own projects and is
 Likewise, should anyone come across this and see potential for optimization, I will check and am thankful for every contribution.
 
 ## Todo
+* Add unnecessary files and folders to .gitignore
 * Travis CI integration 
 * Input validation / sanitation by either:
     * form presubmit validation
@@ -26,6 +27,8 @@ Likewise, should anyone come across this and see potential for optimization, I w
     * Add swagger for the API
 * Product stock management
 * User authentication
+* Add automated tests for Models and Controllers
+* Change from h2 database to MySQL or PostgreSQL
 * Generate Production version
     * examine possibilities of doing so in a  Docker container
     * Deploy on AWS
@@ -39,5 +42,6 @@ Likewise, should anyone come across this and see potential for optimization, I w
 | Scala                 | View templates                        |
 | Bootstrap             | Make it pretty enough                 |
 | Javascript / jQuery   | Bootstrap Modals and Delete calls     |
+| H2                    | Database                              |
 | HTLM / CSS            | Essentials of the Web                 |
 
