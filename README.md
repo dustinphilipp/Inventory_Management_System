@@ -15,7 +15,6 @@ If anyone decides to use this as a reference point for their own projects and is
 Likewise, should anyone come across this and see potential for optimization, I will check and am thankful for every contribution.
 
 ## Todo
-* Add unnecessary files and folders to .gitignore
 * Travis CI integration 
 * Input validation / sanitation by either:
     * form presubmit validation
