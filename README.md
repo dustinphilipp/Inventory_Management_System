@@ -4,7 +4,7 @@ This is an unfinished work in progress.
 Creating this web-application serves the dual purpose of building my publicly visible portfolio whilst also learning my way around the play framework.  
 This project is based on Nicolas Leroux and Sietse de Kapers Play for Java (https://www.manning.com/books/play-for-java).
  
-As I am using Play 2.7.0 and many things changed over the years, the book was a good starting point and still delivers good explanations for concepts,  
+As I am using Play 2.7.0 and many things changed over the years, the book was a good starting point and still delivers good explanations for concepts,
 yet mostly serves as inspiration. Study of Plays documentation and migration guides, combined with experimentation, 
 are necessary to build a similiar Application with Play 2.7.0.
 
