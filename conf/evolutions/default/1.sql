@@ -35,7 +35,16 @@ create table stock_item (
   warehouse_id                  bigint,
   product_id                    bigint,
   quantity                      bigint,
+  active                        boolean,
   constraint pk_stock_item primary key (id)
+);
+
+create table stock_item_movement (
+  id                            bigint auto_increment not null,
+  movement_quantity             bigint,
+  movement_date                 timestamp,
+  stock_item_id                 bigint,
+  constraint pk_stock_item_movement primary key (id)
 );
 
 create table tag (
@@ -65,6 +74,9 @@ alter table stock_item add constraint fk_stock_item_warehouse_id foreign key (wa
 create index ix_stock_item_product_id on stock_item (product_id);
 alter table stock_item add constraint fk_stock_item_product_id foreign key (product_id) references product (id) on delete restrict on update restrict;
 
+create index ix_stock_item_movement_stock_item_id on stock_item_movement (stock_item_id);
+alter table stock_item_movement add constraint fk_stock_item_movement_stock_item_id foreign key (stock_item_id) references stock_item (id) on delete restrict on update restrict;
+
 alter table warehouse add constraint fk_warehouse_address_id foreign key (address_id) references address (id) on delete restrict on update restrict;
 
 
@@ -82,6 +94,9 @@ drop index if exists ix_stock_item_warehouse_id;
 alter table stock_item drop constraint if exists fk_stock_item_product_id;
 drop index if exists ix_stock_item_product_id;
 
+alter table stock_item_movement drop constraint if exists fk_stock_item_movement_stock_item_id;
+drop index if exists ix_stock_item_movement_stock_item_id;
+
 alter table warehouse drop constraint if exists fk_warehouse_address_id;
 
 drop table if exists address;
@@ -91,6 +106,8 @@ drop table if exists product;
 drop table if exists product_tag;
 
 drop table if exists stock_item;
+
+drop table if exists stock_item_movement;
 
 drop table if exists tag;
 

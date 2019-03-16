@@ -18,13 +18,14 @@ public class StockItemMovement extends Model implements PathBindable<StockItemMo
 
   @Id
   public Long id;
-  @ManyToOne
-  @Constraints.Required
-  public StockItem stockItem;
   @Constraints.Required
   public Long movementQuantity;
   @Constraints.Required
   public Date movementDate;
+
+  @ManyToOne
+  @Constraints.Required
+  public StockItem stockItem;
 
   public static final Finder<Long, StockItemMovement> find = new Finder<>(StockItemMovement.class);
 

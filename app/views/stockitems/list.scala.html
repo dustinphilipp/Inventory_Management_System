@@ -1,0 +1,56 @@
+@(currentPage: io.ebean.PagedList[StockItem])
+@import helper._
+
+@main("Stockitem overview") {
+  <div class="container text-center">
+    <h2>All stockitems</h2>
+  </div>
+
+  @if(currentPage.getTotalCount != 0){
+    @util.javascriptDelete()
+    <div class="table-responsive-sm">
+      <table class="table table-striped w-auto mx-auto">
+        <thead class="thead-light">
+        <tr>
+          <th>ID</th>
+          <th>Warehouse</th>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @for(stockItem <- currentPage.getList()) {
+        @if(stockItem.active){
+        <tr>
+          <td><a href="@routes.StockItems.details(stockItem) ">@stockItem.id</a></td>
+          <td><a href="@routes.StockItems.details(stockItem) ">@stockItem.warehouse.toString</a></td>
+          <td><a href="@routes.StockItems.details(stockItem) ">@stockItem.product.toString</a></td>
+          <td><a href="@routes.StockItems.details(stockItem) ">@stockItem.quantity</a></td>
+          <td>
+            @(util.modalButton(("StockItem_" + stockItem.id), routes.StockItems.details(stockItem).toString(), "", "fas fa-pencil-alt"))
+            <a href="#"><button type="button" class="btn btn-danger" onclick="javascript:del('@helper.CSRF(routes.StockItems.delete(stockItem))')">
+              <i class="fas fa-trash"></i>
+            </button></a>
+          </td>
+        </tr>
+        }
+        }
+        </tbody>
+      </table>
+    </div>
+
+    @util.pagination(currentPage.hasPrev, routes.StockItems.list(currentPage.getPageIndex - 1).toString
+    ,currentPage.hasNext, routes.StockItems.list(currentPage.getPageIndex + 1).toString
+    ,currentPage.getDisplayXtoYofZ(" - "," / "))
+  } else {
+    <div class="container mt-3 text-center">
+      There is no stock.
+    </div>
+  }
+
+  <div class="container">
+    @(util.modalButton("StockItem_New", routes.StockItems.newStockItem().toString(), "New StockItem", "fas fa-plus", true))
+    @(util.modalMultipartForm(routes.StockItems.save().toString()))
+  </div>
+}

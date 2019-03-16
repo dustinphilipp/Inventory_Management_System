@@ -2,6 +2,7 @@ package models;
 
 import io.ebean.Finder;
 import io.ebean.Model;
+import io.ebean.PagedList;
 import play.data.validation.Constraints;
 import play.mvc.PathBindable;
 import play.mvc.QueryStringBindable;
@@ -29,10 +30,18 @@ public class StockItem extends Model implements PathBindable<StockItem>, QuerySt
   @Constraints.Required
   public Long quantity;
 
-  @OneToMany(mappedBy="stockitem")
-  public List<StockItemMovement> stockMovement = new ArrayList<>();
+  public Boolean active;
+
+  @OneToMany(mappedBy="stockItem")
+  public List<StockItemMovement> stockItemMovements = new ArrayList<>();
 
   public static final Finder<Long, StockItem> find = new Finder<>(StockItem.class);
+
+  public StockItem() {}
+
+  public StockItem(Long quantity) {
+    this.quantity = quantity;
+  }
 
   public Warehouse getWarehouse() {
     return warehouse;
@@ -56,6 +65,25 @@ public class StockItem extends Model implements PathBindable<StockItem>, QuerySt
 
   public void setQuantity(Long quantity) {
     this.quantity = quantity;
+  }
+
+  public Boolean getActive() {
+    return active;
+  }
+
+  public void setActive(Boolean active) {
+    this.active = active;
+  }
+
+  public static PagedList<StockItem> find(int page) {
+
+    return find.query()
+        .where()
+        .eq("active", true)
+        .orderBy("id asc")
+        .setFirstRow((page * helpers.ConfigHelper.getMaxRows()))
+        .setMaxRows(helpers.ConfigHelper.getMaxRows())
+        .findPagedList();
   }
 
   public static StockItem findById(Long id) {
