@@ -30,5 +30,8 @@ GET     /stockitems/new             controllers.StockItems.newStockItem(request:
 GET     /stockitems/:id             controllers.StockItems.details(id: models.StockItem, request: Request)
 DELETE  /stockitems/:id             controllers.StockItems.delete(id: models.StockItem, request: Request)
 
+# Adding routes for stockItem management
+GET     /stockitems/:id/movements   controllers.StockItemMovements.list(id: models.StockItem)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

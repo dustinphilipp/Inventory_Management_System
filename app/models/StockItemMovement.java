@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -75,6 +76,14 @@ public class StockItemMovement extends Model implements PathBindable<StockItemMo
         .eq("id", id)
         .findOneOrEmpty()
         .orElse(null);
+  }
+
+  public static List<StockItemMovement> findForStockItem(StockItem stockItem) {
+    return find.query()
+        .where()
+        .eq("stock_item_id", stockItem.getId())
+        .orderBy("id asc")
+        .findList();
   }
 
   @Override

@@ -28,6 +28,9 @@
           <td><a href="@routes.StockItems.details(stockItem) ">@stockItem.product.toString</a></td>
           <td><a href="@routes.StockItems.details(stockItem) ">@stockItem.quantity</a></td>
           <td>
+            <a href="@routes.StockItemMovements.list(stockItem)"><button type="button" class="btn">
+              <i class="fas fa-search"></i>
+            </button></a>
             @(util.modalButton(("StockItem_" + stockItem.id), routes.StockItems.details(stockItem).toString(), "", "fas fa-pencil-alt"))
             <a href="#"><button type="button" class="btn btn-danger" onclick="javascript:del('@helper.CSRF(routes.StockItems.delete(stockItem))')">
               <i class="fas fa-trash"></i>

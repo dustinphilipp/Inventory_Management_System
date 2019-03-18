@@ -85,6 +85,14 @@ public class Product extends Model implements PathBindable<Product>, QueryString
         .findPagedList();
   }
 
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
   public Boolean getActive() {
     return active;
   }
@@ -184,6 +192,13 @@ public class Product extends Model implements PathBindable<Product>, QueryString
     return true;
   }
 
+  public static Product findById(Long id) {
+    return find.query()
+        .where()
+        .eq("id", id)
+        .findOneOrEmpty()
+        .orElse(null);
+  }
 
   @Override
   public Product bind(String key, String value) {

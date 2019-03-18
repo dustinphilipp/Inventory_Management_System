@@ -1,7 +1,9 @@
 package controllers;
 
 import io.ebean.PagedList;
+import models.Product;
 import models.StockItem;
+import models.Warehouse;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
@@ -16,6 +18,10 @@ public class StockItems extends Controller {
   public Result list(int page) {
 
     PagedList<StockItem> stockItems = StockItem.find(page);
+    for(StockItem stockItem : stockItems.getList()){
+      stockItem.setWarehouse(Warehouse.findById(stockItem.warehouse.getId()));
+      stockItem.setProduct(Product.findById(stockItem.product.getId()));
+    }
     return ok(list.render(stockItems));
   }
 

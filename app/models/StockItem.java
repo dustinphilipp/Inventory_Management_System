@@ -43,6 +43,14 @@ public class StockItem extends Model implements PathBindable<StockItem>, QuerySt
     this.quantity = quantity;
   }
 
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
   public Warehouse getWarehouse() {
     return warehouse;
   }

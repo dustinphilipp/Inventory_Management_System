@@ -1,4 +1,4 @@
-# --- Insert products, tags, product-tag-mappings
+# --- Insert products, tags, product-tag-mappings, stockitems, stockitem movements
 
 # --- !Ups
 
@@ -53,7 +53,7 @@ insert into product (id, ean, name, description, active) values (58, '7777777777
 insert into product (id, ean, name, description, active) values (59, '8888888888888', 'Paperclip 8888888888888', 'A paperclip', true);
 insert into product (id, ean, name, description, active) values (60, '9999999999999', 'Paperclip 9999999999999', 'A paperclip', true);
 
-
+-- We insert our Tags (if not already present) on startup via loading from YAML
 --insert into tag (id,name) values(1, 'lightweight');
 --insert into tag (id,name) values(2, 'metal');
 --insert into tag (id,name) values(3, 'plastic');
@@ -71,6 +71,24 @@ insert into product (id, ean, name, description, active) values (60, '9999999999
 --insert into product_tag(product_id, tag_id) values (6, 2);
 --insert into product_tag(product_id, tag_id) values (7, 3);
 
+insert into address(id, street, number, postal_code, city, country) values (1, 'Str.', '1', '10101', 'City', 'Country');
+insert into address(id, street, number, postal_code, city, country) values (2, 'Str.', '2', '10102', 'City', 'Country');
+insert into address(id, street, number, postal_code, city, country) values (3, 'Str.', '2', '10103', 'City', 'Country');
+
+insert into warehouse(id, name, address_id, active) values (1, 'Test', 1, true);
+insert into warehouse(id, name, address_id, active) values (2, 'Lorem', 2, true);
+insert into warehouse(id, name, address_id, active) values (3, 'Ipsum', 3, true);
+
+insert into stock_item(id, warehouse_id, product_id, quantity, active) values (1, 1, 1, 500, true);
+insert into stock_item(id, warehouse_id, product_id, quantity, active) values (2, 2, 3, 250, true);
+insert into stock_item(id, warehouse_id, product_id, quantity, active) values (3, 3, 2, 300, true);
+
+insert into stock_item_movement(id, movement_quantity, movement_date, stock_item_id) values (1, 100, '2019-01-01', 1);
+insert into stock_item_movement(id, movement_quantity, movement_date, stock_item_id) values (2, 150, '2019-01-01', 1);
+insert into stock_item_movement(id, movement_quantity, movement_date, stock_item_id) values (3, 250, '2019-01-01', 1);
+insert into stock_item_movement(id, movement_quantity, movement_date, stock_item_id) values (4, 250, '2019-01-01', 2);
+insert into stock_item_movement(id, movement_quantity, movement_date, stock_item_id) values (5, 300, '2019-01-01', 3);
+
 # --- !Downs
 
 SET REFERENTIAL_INTEGRITY FALSE;
@@ -80,5 +98,9 @@ delete from product_tag;
 delete from product;
 
 delete from tag;
+
+delete from stock_item;
+delete from warehouse;
+delete from address;
 
 SET REFERENTIAL_INTEGRITY TRUE;
