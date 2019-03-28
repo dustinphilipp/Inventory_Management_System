@@ -10,7 +10,7 @@
   <fieldset id="form_fieldset">
     <legend>
       Product
-      @(productForm("name").getValue().orElse("New"))
+      @(productForm("name").value().orElse("New"))
     </legend>
     @helper.CSRF.formField
     <input type="hidden" value="@productForm("id").value.orElse("")" name="id"/>
@@ -58,19 +58,19 @@
         <div class="form-check form-check-inline">
           <input class="form-check-input" id="tags[0].id" name="tags[0].id" value="1" type="checkbox"
             @for(i <- 0 to 2) {
-              @if(productForm("tags[" + i + "].id").getValue().orElse("")=="1"){ checked }
+              @if(productForm("tags[" + i + "].id").value().orElse("")=="1"){ checked }
             }> <label class="form-check-label" for="tags[0].id">lightweight</label>
         </div>
         <div class="form-check form-check-inline">
           <input class="form-check-input" id="tags[1].id" name="tags[1].id" value="2" type="checkbox"
             @for(i <- 0 to 2) {
-              @if(productForm("tags[" + i + "].id").getValue().orElse("")=="2"){ checked }
+              @if(productForm("tags[" + i + "].id").value().orElse("")=="2"){ checked }
             }> <label class="form-check-label" for="tags[1].id">metal</label>
         </div>
         <div class="form-check form-check-inline">
           <input class="form-check-input" id="tags[2].id" name="tags[2].id" value="3" type="checkbox"
             @for(i <- 0 to 2) {
-              @if(productForm("tags[" + i + "].id").getValue().orElse("")=="3"){ checked }
+              @if(productForm("tags[" + i + "].id").value().orElse("")=="3"){ checked }
           }> <label class="form-check-label" for="tags[2].id">plastic</label>
         </div>
       </div>

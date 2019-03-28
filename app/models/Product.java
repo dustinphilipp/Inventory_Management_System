@@ -113,6 +113,10 @@ public class Product extends Model implements PathBindable<Product>, QueryString
     this.ean = ean;
   }
 
+  public String getName() {
+    return name;
+  }
+
   public void setName(String name) {
     this.name = name;
   }
